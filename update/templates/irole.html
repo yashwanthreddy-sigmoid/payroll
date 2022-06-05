@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert Role</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<center>
+    <div>
+        <form action="irole" method="post">
+        {% csrf_token %}
+        <h3>Insert new role</h3>
+        <table>
+        <tr>
+            <td>RoleId:</td>
+            <td><input type="number" name="rid" value=""/></td>
+        </tr>
+        <tr>
+            <td>Role Name:</td>
+            <td><input type="text" name="rolename" value=""/></td>
+        </tr>
+        <tr>
+            <td>Basic:</td>
+            <td><input type="number" name="basic" value="" /></td>
+        </tr>
+        <tr>
+            <td>House rent allowance:</td>
+            <td><input type="number" name="houserentallowance" value=""></td>
+        </tr>
+        <tr>
+            <td>Bonus:</td>
+            <td><input type="number" name="bonus" value=""/></td>
+        </tr>
+        <tr>
+            <td>Travel allowance:</td>
+            <td><input type="number" name="travelallowance" value=""/></td>
+        </tr>
+        <tr>
+            <td>Medical allowance:</td>
+            <td><input type="number" name="medicalallowance" value=""/></td>
+        </tr>
+        <tr>
+            <td>PF contribution:</td>
+            <td><input type="number" name="pfcontribution" value=""/></td>
+        </tr>
+        <tr>
+            <td>Welfaretrust Fund:</td>
+            <td><input type="number" name="welfaretrust" value=""/></td>
+        </tr>
+        </table>
+        <input type="submit" value="Insert"/>
+    </form>
+    </div>
+    <br/>
+    <a href="{% url 'admin home' %}">Goto Admin page</a>
+    {% if errors %}
+        <h3 style="color:red">{{errors}}</h3>
+    {% endif %}
+    {% if messages %}
+        {% for i in messages %}
+
+        <h3 style="color:{% if i.tags == 'success' %}green{% else %}red{% endif %}">{{i}}</h3>
+        {% endfor %}
+        {% endif %}
+</center>
+</body>
+</html>

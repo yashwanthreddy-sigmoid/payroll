@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search for Employee role</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<center>
+<div>
+
+    <form action="getemprole" method="post">
+        {% csrf_token %}
+        <label>Please select the eid:</label>
+        <select name="empid">
+            {% for e in emp %}
+            <option value="{{e.empid}}">{{e.empid}}-{{e.name}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Select">
+    </form>
+    <br/>
+
+    <a href="{% url 'admin home' %}">Goto Admin page</a>
+</div>
+<br/>
+    {% if valid == True %}
+    <form action="getemprole" method="post">
+        {% csrf_token %}
+        <label>Select the roleid which needs to be updated:</label>
+        {% for e in emprole %}
+        <select name="ids">
+            <option value="{{e.empid_id}}|{{e.rid_id}}">emp:{{e.empid_id}}-role:{{e.rid_id}}</option>
+        </select>
+        {% endfor %}
+        <input type="submit" value="Select Pair">
+    </form>
+    {% endif %}
+    {% if messages %}
+        {% for i in messages %}
+
+        <h3 style="color:{% if i.tags == 'success' %}green{% else %}red{% endif %}">{{i}}</h3>
+        {% endfor %}
+        {% endif %}
+</center>
+</body>
+</html>

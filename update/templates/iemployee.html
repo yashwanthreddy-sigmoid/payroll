@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert Employee</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<center>
+  <h3> insert employee</h3>
+  <div>
+    <form action="iemployee" method="post">
+        {% csrf_token %}
+        <table>
+        <tr>
+            <td>empid:</td>
+            <td><input type="text" name="empid" value=""/></td>
+        </tr>
+        <tr>
+            <td>name:</td>
+            <td><input type="text" name="name" value=""/></td>
+        </tr>
+        <tr>
+            <td>email:</td>
+            <td><input type="email" name="email" value="" /></td>
+        </tr>
+        <tr>
+            <td>phno:</td>
+            <td><input type="number" name="phno" value=""></td>
+        </tr>
+        <tr>
+            <td>dob:</td>
+            <td><input type="date" name="dob" value=""/></td>
+        </tr>
+        <tr>
+            <td>doj:</td>
+            <td><input type="date" name="doj" value=""/></td>
+        </tr>
+        <tr>
+            <td>address:</td>
+            <td><input type="text" name="address" value=""/></td>
+        </tr>
+        </table>
+        <input type="submit" value="Insert"/>
+    </form>
+</div>
+    <br/>
+    <a href="{% url 'admin home' %}">Goto Admin page</a>
+    {% if errors %}
+        <h3 style="color:red">{{errors}}</h3>
+    {% endif %}
+    {% if messages %}
+        {% for i in messages %}
+
+        <h3 style="color:{% if i.tags == 'success' %}green{% else %}red{% endif %}">{{i}}</h3>
+        {% endfor %}
+    {% if i.tags == 'success' %}
+    <br/>
+    <a href="{% url 'iemprole' %}">Map Role to added employee</a>
+    {% endif %}
+        {% endif %}
+</center>
+</body>
+</html>

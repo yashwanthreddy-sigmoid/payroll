@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Queries</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<center>
+  <div>
+    <form action="vqueries" method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Empid<input type="number" name="empid" value=""></td>
+                <td>Query<input type="text" name="query" value=""></td>
+                <td><input type="submit" value="search"></td>
+            </tr>
+            <tr>
+                <th>Empid</th>
+                <th>query</th>
+                <th>Date</th>
+            </tr>
+            {% if queries %}
+            {% for i in queries %}
+            <tr>
+                <td>{{i.empid_id}}</td>
+                <td>{{i.query}}</td>
+                <td>{{i.date}}</td>
+            </tr>
+            {% endfor %}
+
+            {% endif %}
+        </table>
+    </form>
+  </div>
+    <br/>
+    <a href="{% url 'admin home' %}">Goto Admin page</a>
+    {% if errors %}
+        <h3 style="color:red">{{errors}}</h3>
+    {% endif %}
+    {% if messages %}
+        {% for i in messages %}
+
+        <h3 style="color:{% if i.tags == 'success' %}green{% else %}red{% endif %}">{{i}}</h3>
+        {% endfor %}
+        {% endif %}
+</center>
+</body>
+</html>

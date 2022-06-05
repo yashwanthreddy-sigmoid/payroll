@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map Employee role</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<center>
+  <div>
+      <h3>Insert or Map Employee Role</h3>
+        <form action="iemprole" method="post">
+        {% csrf_token %}
+            <table>
+                <tr>
+                    <th><label>Select empid:</label></th>
+                    <th><label>Select roleid:</label></th>
+                    <th>Job Location</th>
+                    <th>start date</th>
+                    <th>end date</th>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="empid">
+                        <option value="">---</option>
+                        {% for e in emp %}
+                        <option value="{{e.empid}}">{{e.empid}}-{{e.name}}</option>
+                        {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select name="rid">
+                        <option value="">---</option>
+                        {% for r in role %}
+                        <option value="{{r.rid}}">{{r.rid}}-{{r.rolename}}</option>
+                        {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select name="joblocation">
+                        <option value="">---</option>
+                        <option value="bangalore">Bangalore</option>
+                        <option value="hyderabad">Hyderabad</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="chennai">Chennai</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="date" name="start_date" value=""/>
+                    </td>
+                    <td>
+                        <input type="date" name="end_date" value=""/>
+                    </td>
+                    <td>
+                        <input type="submit" value="Insert"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+  </div>
+    <br/>
+    <a href="{% url 'admin home' %}">Goto Admin page</a>
+    {% if errors %}
+        <h3 style="color:red">{{errors}}</h3>
+    {% endif %}
+    {% if messages %}
+        {% for i in messages %}
+
+        <h3 style="color:{% if i.tags == 'success' %}green{% else %}red{% endif %}">{{i}}</h3>
+        {% endfor %}
+    {% if i.tags == 'success' %}
+    <br/>
+    <a href="{% url 'iaccount' %}">Add account details</a>
+    {% endif %}
+        {% endif %}
+</center>
+</body>
+</html>

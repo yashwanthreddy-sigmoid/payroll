@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+</head>
+<body>
+
+<form action="empdetails" method="post">
+    {% csrf_token %}
+    empid:<input type="number" name="empid"/>
+    <input type="submit">
+</form>
+
+</body>
+</html>

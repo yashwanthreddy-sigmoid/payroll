@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Emprole</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<center>
+  <h3> Please confirm deletion</h3>
+  <div>
+    <table class="container">
+      <tr>
+        <th>Employee id</th>
+        <th>Role id</th>
+        <th>Job location</th>
+        <th>Start date</th>
+        <th>End date</th>
+        <th>Update</th>
+      </tr>
+      <tr>
+        <td>{{i.empid_id}}</td>
+        <td>{{i.rid_id}}</td>
+        <td>{{i.joblocation}}</td>
+        <td>{{i.start_date}}</td>
+        <td>{{i.end_date}}</td>
+        <td><a href="demprole/{{i.empid_id}}/{{i.rid_id}}">Delete</a></td>
+      </tr>
+    </table>
+
+  </div>
+  <a href="{% url 'admin home' %}">Goto Admin page</a>
+  <br/>
+    {% if messages %}
+        {% for i in messages %}
+
+        <h3 style="color:{% if i.tags == 'success' %}green{% else %}red{% endif %}">{{i}}</h3>
+        {% endfor %}
+        {% endif %}
+</center>
+</body>
+</html>

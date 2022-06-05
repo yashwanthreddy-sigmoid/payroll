@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert Account</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<center>
+    <div>
+        <form action="iaccount" method="post">
+        {% csrf_token %}
+        <h3>Insert new Account</h3>
+        <table>
+        <tr>
+            <td>Employee ID:</td>
+            <td><input type="number" name="empid" value=""/></td>
+        </tr>
+        <tr>
+            <td>Bank Account No:</td>
+            <td><input type="number" name="bankaccountno" value=""/></td>
+        </tr>
+        <tr>
+            <td>PAN No:</td>
+            <td><input type="text" name="pan no" value="" /></td>
+        </tr>
+        <tr>
+            <td>PF No:</td>
+            <td><input type="text" name="pf number" value=""></td>
+        </tr>
+        </table>
+        <input type="submit" value="Insert"/>
+    </form>
+    </div>
+    <br/>
+    <a href="{% url 'admin home' %}">Goto Admin page</a>
+    {% if errors %}
+        <h3 style="color:red">{{errors}}</h3>
+    {% endif %}
+    {% if messages %}
+        {% for i in messages %}
+
+        <h3 style="color:{% if i.tags == 'success' %}green{% else %}red{% endif %}">{{i}}</h3>
+        {% endfor %}
+        {% endif %}
+</center>
+</body>
+</html>

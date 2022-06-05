@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Employees</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<center>
+    <div>
+    <form action="vemployee" method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>Empid</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>phno</th>
+                <th>Address</th>
+                <th>Birth Day</th>
+                <th>Joining Date</th>
+            </tr>
+            <tr>
+                <td><input width="10px" type="number" name="empid" value=""></td>
+                <td><input type="text" name="query" value=""></td>
+                <td><input type="text" name="email" value=""></td>
+                <td><input type="number" name="phno" value=""></td>
+                <td><input type="text" name="address" value=""></td>
+                <td></td>
+                <td><input type="submit" value="search"></td>
+            </tr>
+            {% if emp %}
+            {% for i in emp %}
+            <tr>
+                <td>{{i.empid}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.phno}}</td>
+                <td>{{i.address}}</td>
+                <td>{{i.dob}}</td>
+                <td>{{i.doj}}</td>
+            </tr>
+            {% endfor %}
+
+            {% endif %}
+        </table>
+    </form>
+  </div>
+    <br/>
+    <a href="{% url 'admin home' %}">Goto Admin page</a>
+    {% if errors %}
+        <h3 style="color:red">{{errors}}</h3>
+    {% endif %}
+    {% if messages %}
+        {% for i in messages %}
+
+        <h3 style="color:{% if i.tags == 'success' %}green{% else %}red{% endif %}">{{i}}</h3>
+        {% endfor %}
+        {% endif %}
+</center>
+</body>
+</html>

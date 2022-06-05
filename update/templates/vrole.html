@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Roles</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<center>
+    <div>
+    <form action="vrole" method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Roleid<input type="number" name="rid"></td>
+                <td>Role name<input type="text" name="name" value=""></td>
+                <td><input type="submit" value="search"></td>
+            </tr>
+            <tr>
+                <th>empid</th>
+                <th>rolename</th>
+                <th>basic</th>
+                <th>houserentallowance</th>
+                <th>bonus</th>
+                <th>travelallowance</th>
+                <th>medicalallowance</th>
+                <th>pfcontribution</th>
+                <th>welfaretrust</th>
+            </tr>
+            {% if role %}
+            {% for i in role %}
+            <tr>
+                <td>{{i.rid}}</td>
+                <td>{{i.rolename}}</td>
+                <td>{{i.basic}}</td>
+                <td>{{i.houserentallowance}}</td>
+                <td>{{i.bonus}}</td>
+                <td>{{i.travelallowance}}</td>
+                <td>{{i.medicalallowance}}</td>
+                <td>{{i.pfcontribution}}</td>
+                <td>{{i.welfaretrust}}</td>
+            </tr>
+            {% endfor %}
+
+            {% endif %}
+        </table>
+    </form>
+  </div>
+    <br/>
+    <a href="{% url 'admin home' %}">Goto Admin page</a>
+    {% if errors %}
+        <h3 style="color:red">{{errors}}</h3>
+    {% endif %}
+    {% if messages %}
+        {% for i in messages %}
+
+        <h3 style="color:{% if i.tags == 'success' %}green{% else %}red{% endif %}">{{i}}</h3>
+        {% endfor %}
+        {% endif %}
+</center>
+</body>
+</html>

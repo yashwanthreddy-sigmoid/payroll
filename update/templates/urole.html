@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Role</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<center>
+<div>
+    <form action="urole" method="post">
+        {% csrf_token %}
+        Please enter the roleid:<input type="number" name="rid"/>
+        <input type="submit">
+    </form>
+    <a href="{% url 'admin home' %}">Goto Admin page</a>
+</div>
+
+<br/>
+<br/>
+{% if valid == True %}
+
+<div>
+    <form action="urole" method="post">
+        {% csrf_token %}
+        <h3>update the necessary fields</h3>
+        <table>
+        <tr>
+            <td>RoleId:</td>
+            <td><input type="text" name="rid" value="{{role.rid}}" readonly/></td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" name="name" value="{{role.rolename}}"/></td>
+        </tr>
+        <tr>
+            <td>Basic:</td>
+            <td><input type="number" name="basic" value="{{role.basic}}" /></td>
+        </tr>
+        <tr>
+            <td>House rent allowance:</td>
+            <td><input type="number" name="hra" value="{{role.houserentallowance}}"></td>
+        </tr>
+        <tr>
+            <td>Bonus:</td>
+            <td><input type="number" name="bonus" value="{{role.bonus}}"/></td>
+        </tr>
+        <tr>
+            <td>Travel allowance:</td>
+            <td><input type="number" name="ta" value="{{role.travelallowance}}"/></td>
+        </tr>
+        <tr>
+            <td>Medical allowance:</td>
+            <td><input type="number" name="ma" value="{{role.medicalallowance}}"/></td>
+        </tr>
+        <tr>
+            <td>PF contribution:</td>
+            <td><input type="number" name="pfc" value="{{role.pfcontribution}}"/></td>
+        </tr>
+        <tr>
+            <td>Welfaretrust Fund:</td>
+            <td><input type="number" name="wf" value="{{role.welfaretrust}}"/></td>
+        </tr>
+        </table>
+        <input type="submit" value="Update"/>
+    </form>
+</div>
+
+{% endif %}
+    {% if messages %}
+        {% for i in messages %}
+
+        <h3 style="color:{% if i.tags == 'success' %}green{% else %}red{% endif %}">{{i}}</h3>
+        {% endfor %}
+        {% endif %}
+</center>
+</body>
+</html>

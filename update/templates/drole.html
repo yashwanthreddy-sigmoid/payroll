@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Role</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<center>
+    <div>
+        <form action="drole" method="post">
+            {% csrf_token %}
+            <label>Select the Role to delete</label>
+            <select name="rid">
+            <option value="">Select Role</option>
+            {% for i in role %}
+            <option value="{{i.rid}}">{{i.rid}}-{{i.rolename}}</option>
+            {% endfor %}
+            </select>
+            <input type="submit" value="Delete">
+        </form>
+    </div>
+    <a href="{% url 'admin home' %}">Goto Admin page</a>
+    {% if errors %}
+        <h3 style="color:red">{{errors}}</h3>
+    {% endif %}
+    {% if messages %}
+        {% for i in messages %}
+
+        <h3 style="color:{% if i.tags == 'success' %}green{% else %}red{% endif %}">{{i}}</h3>
+        {% endfor %}
+        {% endif %}
+</center>
+</body>
+</html>

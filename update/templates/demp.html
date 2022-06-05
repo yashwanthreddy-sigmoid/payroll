@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Employee</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<center>
+    <h2>Deleting Employee deletes entries of employee on all applicable tables!!!</h2>
+    <div>
+        <form action="demp" method="post">
+            {% csrf_token %}
+            <label>Select the Employee to delete</label>
+            <select name="empid">
+            <option value="">Select Employee</option>
+            {% for i in emp %}
+            <option value="{{i.empid}}">{{i.empid}}-{{i.name}}</option>
+            {% endfor %}
+            </select>
+            <input type="submit" value="Delete">
+        </form>
+    </div>
+    <a href="{% url 'admin home' %}">Goto Admin page</a>
+    {% if errors %}
+        <h3 style="color:red">{{errors}}</h3>
+    {% endif %}
+    {% if messages %}
+        {% for i in messages %}
+
+        <h3 style="color:{% if i.tags == 'success' %}green{% else %}red{% endif %}">{{i}}</h3>
+        {% endfor %}
+        {% endif %}
+</center>
+</body>
+</html>

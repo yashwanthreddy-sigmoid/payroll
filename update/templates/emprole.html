@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Emprole</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<center>
+  <div>
+    <h3>please select the operation to do</h3>
+    <table class="container table">
+      <thead class="thead-dark">
+      <tr>
+        <th>Employee id</th>
+        <th>Role id</th>
+        <th>Job location</th>
+        <th>Start date</th>
+        <th>End date</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+      </thead>
+      {% for i in emprole %}
+      <tr>
+        <td>{{i.empid_id}}</td>
+        <td>{{i.rid_id}}</td>
+        <td>{{i.joblocation}}</td>
+        <td>{{i.start_date}}</td>
+        <td>{{i.end_date}}</td>
+        <td><a href="eemprole/{{i.empid_id}}/{{i.rid_id}}">Update</a></td>
+        <td><a href="demprole/{{i.empid_id}}/{{i.rid_id}}">Delete</a></td>
+      </tr>
+      {% endfor %}
+    </table>
+
+  </div>
+  <a href="{% url 'admin home' %}">Goto Admin page</a>
+    {% if messages %}
+        {% for i in messages %}
+
+        <h3 style="color:{% if i.tags == 'success' %}green{% else %}red{% endif %}">{{i}}</h3>
+        {% endfor %}
+    {% endif %}
+</center>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+
+    <center>
+    <form action="test" method="post">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <input type="submit" value="Submit">
+    </form>
+        {% if messages %}
+        {% for i in messages %}
+        <h3>{{i}}</h3>
+        {% endfor %}
+        {% endif %}
+    </center>
+</body>
+</html>

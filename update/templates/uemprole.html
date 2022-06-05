@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Employee Role</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<center>
+<div>
+    <form action="/update/uemprole/{{emprole.empid_id}}/{{emprole.rid_id}}/" method="post">
+        {% csrf_token %}
+        <h3>update the necessary fields</h3>
+        <table>
+        <tr>
+            <td>empid:</td>
+            <td><input type="number" name="empid" value="{{emprole.empid_id}}" readonly/></td>
+        </tr>
+        <tr>
+            <td>Roleid:</td>
+            <td>
+                <input type="number" name="rid" value="{{emprole.rid_id}}" readonly/>
+            </td>
+        </tr>
+        <tr>
+            <td>Job location:</td>
+            <td>
+                <input type="text" value="{{emprole.joblocation}}" name="joblocation"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Start Date:</td>
+            <td><input type="date" name="start_date" value="{{emprole.start_date|date:"Y-m-d"}}"/></td>
+        </tr>
+        <tr>
+            <td>End Date:</td>
+            <td><input type="date" name="end_date" value="{{emprole.end|date:"Y-m-d"}}"></td>
+        </tr>
+        </table>
+        <input type="submit" value="Update"/>
+    </form>
+    <a href="{% url 'emprole' %}">update another emprole</a>
+    <a href="{% url 'admin home' %}">Goto Admin page</a>
+</div>
+    <a href="{% url 'admin home' %}">Goto Admin page</a>
+    <br/>
+    {% if messages %}
+        {% for i in messages %}
+
+        <h3 style="color:{% if i.tags == 'success' %}green{% else %}red{% endif %}">{{i}}</h3>
+        {% endfor %}
+        {% endif %}
+</center>
+</body>
+</html>

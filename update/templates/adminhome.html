@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<center>
+    <div>
+    <h1>Welcome Admin</h1>
+    <h3>please select the operation to do</h3>
+        <br/>
+        <table class="container">
+    <tr>
+        <td>
+            <strong>Employee</strong>
+        </td>
+        <td>
+            <a href="{% url 'uemployee' %}">update employee details</a>
+        </td>
+        <td>
+            <a href="{% url 'iemployee' %}">insert employee </a>
+        </td>
+        <td>
+            <a href="{% url 'vemployee' %}">view employees </a>
+        </td>
+        <td>
+            <a href="{% url 'demp' %}">Delete employee </a>
+        </td>
+    </tr>
+    <tr>
+
+        <td>
+            <strong>Role</strong>
+        </td>
+        <td>
+            <a href="{% url 'urole' %}">update role</a>
+        </td>
+        <td>
+            <a href="{% url 'irole' %}">insert role</a>
+        </td>
+        <td>
+            <a href="{% url 'vrole' %}">View roles</a>
+        </td>
+        <td>
+            <a href="{% url 'drole' %}">Delete roles</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+        <strong>Employee Role</strong>
+        </td>
+        <td>
+            <a href="{% url 'emprole' %}">update employee role</a>
+        </td>
+        <td>
+            <a href="{% url 'iemprole' %}">insert employee role</a>
+        </td>
+        <td>
+            <a href="{% url 'vemprole' %}">View employee role</a>
+        </td>
+        <td>
+            <a href="{% url 'emprole' %}">Delete employee role</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Account Details</strong>
+        </td>
+        <td>
+            <a href="{% url 'uaccount' %}">update AccountDetails</a>
+        </td>
+        <td>
+            <a href="{% url 'iaccount' %}">insert AccountDetails</a>
+        </td>
+        <td>
+            <a href="{% url 'vaccount' %}">View AccountDetails</a>
+        </td>
+        <td>
+            <a href="{% url 'daccount' %}">Delete AccountDetails</a>
+        </td>
+    </tr>
+    <tr>
+        <td><strong>Password</strong></td>
+        <td><a href="{% url 'rpassword' %}">reset password</a></td>
+        <td><strong>Queries</strong></td>
+        <td><a href="{% url 'vqueries' %}">view queries</a></td>
+        <td></td>
+    </tr>
+
+        </table>
+    </div>
+</center>
+</body>
+</html>

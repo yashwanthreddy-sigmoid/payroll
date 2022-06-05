@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Employee</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+
+<center>
+<div>
+    <form action="uemployee" method="post">
+        {% csrf_token %}
+        Please enter the eid:<input type="number" name="eid"/>
+        <input type="submit">
+    </form>
+    <a href="{% url 'admin home' %}">Goto Admin page</a>
+</div>
+
+<br/>
+<br/>
+{% if valid == True %}
+
+<div>
+    <form action="uemployee" method="post">
+        {% csrf_token %}
+        <h3>update the necessary fields</h3>
+        <table>
+        <tr>
+            <td>id:</td>
+            <td><input type="text" name="eid" value="{{emp.empid}}" readonly/></td>
+        </tr>
+        <tr>
+            <td>name:</td>
+            <td><input type="text" name="name" value="{{emp.name}}"/></td>
+        </tr>
+        <tr>
+            <td>email:</td>
+            <td><input type="email" name="email" value="{{emp.email}}" /></td>
+        </tr>
+        <tr>
+            <td>phno:</td>
+            <td><input type="number" name="phno" value="{{emp.phno}}"></td>
+        </tr>
+        <tr>
+            <td>dob:</td>
+            <td><input type="date" name="dob" value="{{emp.dob|date:"Y-m-d"}}"/></td>
+        </tr>
+        <tr>
+            <td>doj:</td>
+            <td><input type="date" name="doj" value="{{emp.doj|date:"Y-m-d"}}"/></td>
+        </tr>
+        <tr>
+            <td>address:</td>
+            <td><input type="text" name="address" value="{{emp.address}}"/></td>
+        </tr>
+        </table>
+        <input type="submit" value="Update"/>
+    </form>
+</div>
+
+{% endif %}
+    {% if messages %}
+        {% for i in messages %}
+
+        <h3 style="color:{% if i.tags == 'success' %}green{% else %}red{% endif %}">{{i}}</h3>
+        {% endfor %}
+        {% endif %}
+</center>
+</body>
+</html>
