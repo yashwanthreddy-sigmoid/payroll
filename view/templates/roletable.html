@@ -1,0 +1,40 @@
+
+
+<style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    </style>
+    <center>
+      <h2>Role table</h2>
+    <table style="width:100%">
+      <tr>
+        <th>roleid</th>
+        <th>rolename</th>
+        <th>basic</th>
+        <th>houserentallowance</th>
+        <th>bonus</th>
+        <th>travelallowance</th>
+        <th>medicalallowance</th>
+        <th>pfcontribution</th>
+        <th>welfaretrust</th>
+
+      </tr>
+      {% for i in p %}
+      <tr>
+        <td>{{i.rid}} </td>
+        <td>{{i.rolename}} </td>
+        <td>{{i.basic}} </td>
+        <td>{{i.houserentallowance}} </td>
+        <td>{{i.bonus}} </td>
+        <td>{{i.travelallowance}} </td>
+        <td>{{i.medicalallowance}} </td>
+        <td>{{i.pfcontribution}} </td>
+        <td>{{i.welfaretrust}} </td>
+        
+ 
+      </tr>
+    
+      {% endfor %}
+    </table>
+  </center>

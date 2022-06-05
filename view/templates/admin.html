@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+<center>
+    <div>
+        <h3>please select the action</h3>
+        <form action="admin" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="empid" value="{{empid}}">
+            <input type="submit" value="Go to profile"/>
+        </form>
+        <br/>
+        <a href="{% url 'admin home' %}">Admin page</a>
+    </div>
+</center>
+</body>
+</html>

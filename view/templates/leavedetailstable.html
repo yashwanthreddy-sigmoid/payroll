@@ -1,0 +1,31 @@
+
+
+
+
+<style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    </style>
+    <center>
+    <h2> leave details table</h2>
+    <table style="width:100%">
+      <tr>
+        <th>leaveid</th>
+        <th>empid</th>
+        <th>date</th>
+
+
+      </tr>
+      {% for i in p %}
+      <tr>
+        <td>{{i.leaveid}} </td>
+        <td>{{i.empid_id}} </td>
+        <td>{{i.date}} </td>
+        <
+ 
+      </tr>
+    
+      {% endfor %}
+    </table>
+  </center>

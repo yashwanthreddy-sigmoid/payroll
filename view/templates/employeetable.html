@@ -1,0 +1,32 @@
+
+<style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    </style>
+    <center>
+    <h2> Employee table</h2>
+    <table style="width:100%">
+      <tr>
+        <th>empid</th>
+        <th>name</th>
+        <th>email</th>
+        <th>phoneno</th>
+        <th>dob</th>
+        <th>doj</th>
+        <th>address</th>
+      </tr>
+      {% for i in p %}
+      <tr>
+        <td>{{i.empid}} </td>
+        <td>{{i.name}} </td>
+        <td>{{i.email}} </td>
+        <td>{{i.phno}} </td>
+        <td>{{i.dob}} </td>
+        <td>{{i.doj}} </td>
+        <td>{{i.address}} </td>
+      </tr>
+    
+      {% endfor %}
+    </table>
+  </center>

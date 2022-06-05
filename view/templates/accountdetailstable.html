@@ -1,0 +1,29 @@
+
+
+<style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    </style>
+    <center>
+    <h2>Account details table</h2>
+    <table style="width:100%">
+      <tr>
+        <th>empid</th>
+        <th>bankaccount number</th>
+        <th>pan number</th>
+        <th>pf number</th>
+
+      </tr>
+      {% for i in p %}
+      <tr>
+        <td>{{i.empid_id}} </td>
+        <td>{{i.bankaccountno}} </td>
+        <td>{{i.pan_no}} </td>
+        <td>{{i.pf_number}} </td>
+ 
+      </tr>
+    
+      {% endfor %}
+    </table>
+  </center>

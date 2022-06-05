@@ -1,0 +1,29 @@
+
+<style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    </style>
+    <center>
+    <h2>Emprole table</h2>
+    <table style="width:100%">
+      <tr>
+        <th>empid</th>
+        <th>roleid</th>
+        <th>joblocation</th>
+        <th>start_date</th>
+        <th>end_date</th>
+
+      </tr>
+      {% for i in p %}
+      <tr>
+        <td>{{i.empid_id}} </td>
+        <td>{{i.rid_id}} </td>
+        <td>{{i.joblocation}} </td>
+        <td>{{i.start_date}} </td>
+        <td>{{i.end_date}} </td>
+      </tr>
+    
+      {% endfor %}
+    </table>
+  </center>

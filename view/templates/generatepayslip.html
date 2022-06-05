@@ -1,0 +1,257 @@
+
+     <!DOCTYPE html>
+     <html lang="en">
+     <head>
+         <meta charset="UTF-8">
+         <title>Payslip</title>
+         <style>
+     table {
+       font-family: arial, sans-serif;
+       border-collapse: collapse;
+       width: 100%;
+     }
+     
+     td, th {
+       border: 1px solid black;
+       text-align: left;
+       padding: 8px;
+     }
+     
+     tr:nth-of-type(even) {
+       background-color: skyblue;
+     }
+     
+     .right{
+         text-align: right;
+     }
+     .noborder{
+         border: 0px
+     }
+     .noright{
+         border-right: 0px;
+     }
+     .noleft{
+         border-left: 0px;
+     }
+     .nobottom{
+         border-bottom: 0px;
+     }
+     .notop{
+         border-top: 0px;
+     }
+     .nocolor{
+         background-color:white;
+     }
+     #main{
+         position:absolute;
+         top:0%;
+         bottom:5%;
+         left:8%;
+         right:8%
+     }
+     </style>
+     </head>
+     <body>
+     <center style="padding=1px">
+         <div id="main">
+         <h3>Salary Slip</h3>
+             <table>
+                 <tr>
+                     <table>
+                         <tr>
+                         <td width="50%">
+                         <table>
+                             <tr>
+                             <td class="noborder" width= "30%">
+                             Name
+                             </td>
+                             <td width="5%" class="noborder" >:</td>
+                             <td class="noborder">
+                             {{name}}
+                             </td>
+                             </tr>
+                         </table>
+                         </td>
+                         <td width="50%">
+                         <table>
+                             <td class="noborder"></td>
+                             <td class="right noborder">
+                             For {{month}} {{year}}
+                             </td>
+                         </table>
+                         </td>
+                         </tr>
+     
+                     </table>
+                 </tr>
+             </table>
+             <br/>
+             <table>
+                 <tr>
+                     <td width="50%">
+                     <div>
+                         <table>
+                             <tr>
+                                 <td class="noborder" width= "30%">
+                                 EMP ID
+                                 </td>
+                                 <td width="5%" class="noborder" >:</td>
+                                 <td class="noborder">
+                                 {{empid}}
+                                 </td>
+                             </tr>
+                             <tr>
+                                 <td class="noborder" width= "30%">
+                                 PF NO
+                                 </td>
+                                 <td width="5%" class="noborder" >:</td>
+                                 <td class="noborder">
+                                 {{pf_no}}
+                                 </td>
+                             </tr>
+                             <tr>
+                                 <td class="noborder" width= "30%">
+                                 Location
+                                 </td>
+                                 <td width="5%" class="noborder" >:</td>
+                                 <td class="noborder">
+                                 {{joblocation}}
+                                 </td>
+                             </tr>
+                             <tr>
+                                 <td class="noborder" width= "30%">
+                                 PAN
+                                 </td>
+                                 <td width="5%" class="noborder" >:</td>
+                                 <td class="noborder">
+                                 {{panno}}
+                                 </td>
+                             </tr>
+                             <tr>
+                                 <td class="noborder" width= "30%">Account No</td>
+                                 <td width="5%" class="noborder" >:</td>
+                                 <td class="noborder">{{acc}}</td>
+                             </tr>
+                         </table>
+                     </div>
+                     </td>
+                     <td width="50%" height="100%">
+                     <div>
+                         <table>
+                            <tr>
+
+                               
+                            </tr>
+                            <tr>
+                                 <td class="noborder" width= "30%">
+                                     Leaves
+                                 </td>
+                                 <td width="5%" class="noborder" >:</td>
+                                 <td class="noborder">
+                                     {{leaves}}
+                                 </td>
+                             </tr>
+                             <tr><td class="noborder nocolor">&nbsp;</td> </tr>
+                             <tr><td class="noborder nocolor">&nbsp;</td> </tr>
+                         </table>
+                     </div>
+                     </td>
+                 </tr>
+             </table>
+             <table>
+                 <tr>
+                     <td width="50%" style="padding:0px">
+                     <table>
+                         <tr>
+                             <th class="noright">Earnings</th>
+                             <td class="noleft"></td>
+                         </tr>
+     
+                         <tr>
+                             <td class="nobottom" width="60%">basic</td>
+                             <td class="right nobottom">{{total_base}}</td>
+                         </tr>
+                         <tr>
+                             <td class="nobottom notop" width="60%">house rent allowance</td>
+                             <td class="right nobottom notop">{{houserentallowance}}</td>
+                         </tr>
+                         <tr>
+                             <td class="nobottom notop" width="60%">bonus</td>
+                             <td class="right nobottom notop">{{bonus}}</td>
+                         </tr>
+                         <tr>
+                             <td class="nobottom notop" width="60%">travel allowance</td>
+                             <td class="right nobottom notop">{{travelallowance}}</td>
+                         </tr>
+                         <tr>
+                             <td class="notop" width="60%">medical allowance</td>
+                             <td class="right notop">{{medicalallowance}}</td>
+                         </tr>
+                         <tr>
+                             <td width="60%">Total</td>
+                             <td class="right">{{total_add}}</td>
+                         </tr>
+                     </table>
+                     </td>
+                     <td width="50%" style="padding:0px">
+                         <table>
+                         <tr>
+                             <th class="noright">Deductions</th>
+                             <td class="noleft"></td>
+                         </tr>
+                         <tr>
+                             <td class="nobottom" width="60%">pf</td>
+                             <td class="right nobottom">{{pf}}</td>
+                         </tr>
+                         <tr>
+                            <td class="nobottom notop"width="60%">welfaretrust</td>
+                            <td class="right nobottom notop">{{welfaretrust}}</td>
+                        </tr>
+                         <tr>
+                             <td class="nobottom notop" width="60%"></td>
+                             <td class="right nobottom notop"></td>
+                         </tr>
+                         <td class="nobottom notop" width="60%"></td>
+                         <td class="right nobottom notop"></td>
+                        </tr>
+                        
+                         
+
+                         <tr><td class="nobottom notop nocolor"><br/></td></tr>
+                         <tr><td class="notop nocolor"><br/></td></tr>
+                         <tr>
+                             <td width="60%">Total</td>
+                             <td>{{total_deductions}}</td>
+                         </tr>
+                         </table>
+                     </td>
+                 </tr>
+     
+                 <tr><br/></tr>
+                 <tr>
+                     <td>
+                     <table>
+                         <tr>
+                         <td class="noborder" width="60%">Net Total:</td>
+                         <td class="right noborder">{{salary}}</td>
+                         </tr>
+                     </table>
+                     </td>
+                     <td>
+                     <table>
+                         <tr>
+                         <td class="noborder">&nbsp;</td>
+                         <td class="noborder">&nbsp;</td>
+                         <td class="noborder"><input type="submit"value="Print" onclick="javascript:window.print()"/></td>
+                        
+                         </tr>
+                     </table>
+                     </td>
+                     </tr>
+                 </table>
+                 </tr>
+         </div>
+     
+     </center>
+     </body>
+     </html>

@@ -1,0 +1,33 @@
+
+
+<style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    </style>
+    <center>
+    <h2> Query details table</h2>
+    <table style="width:100%">
+      <tr>
+        <th>queryid</th>
+        <th>empid</th>
+        <th>date</th>
+        <th>date</th>
+
+
+      </tr>
+      {% for i in p %}
+      <tr>
+        <td>{{i.idqueries}} </td>
+        <td>{{i.empid_id}} </td>
+        <td>{{i.date}} </td>
+        <td>{{i.date}} </td>
+        
+ 
+      </tr>
+    
+      {% endfor %}
+
+    </table>
+
+  </center>
